@@ -1,5 +1,5 @@
 # 💫 About Me:
-🎓 Third-year Computer Science student with a passion for technology and innovation  
+🎓 Fourth-year Computer Science student with a passion for technology and innovation  
 🌌 Enthusiast in machine learning, data science, and automation  
 💼 Currently honing skills in preprocessing, databases, and intelligent systems  
 🚀 Always eager to explore new technologies and apply them in real-world projects  
