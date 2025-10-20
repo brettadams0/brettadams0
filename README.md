@@ -1,13 +1,13 @@
-# 💫 About Me:
-🎓 Fourth-year Computer Science student with a passion for technology and innovation  
-🌌 Enthusiast in machine learning, data science, and automation  
-💼 Currently honing skills in preprocessing, databases, and intelligent systems  
-🚀 Always eager to explore new technologies and apply them in real-world projects  
+#  About Me:
+ - Fourth-year Computer Science student with a passion for technology and innovation
+ - Enthusiast in machine learning, data science, and automation
+ - Currently honing skills in preprocessing, databases, and intelligent systems
+ - Always eager to explore new technologies and apply them in real-world projects  
 
-## 🌐 Socials:
+## Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bretta/) [![Website](https://img.shields.io/badge/Website-%230077B5.svg?logo=internet&logoColor=white)](https://brettadams0.github.io/)
 
-# 💻 Tech Stack:
+# Tech Stack:
 
 ### Programming Languages & Web Development
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  
