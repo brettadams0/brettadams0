@@ -1,29 +1,40 @@
-#  About Me:
- - Fourth-year Computer Science student with a passion for technology and innovation
- - Enthusiast in machine learning, data science, and automation
- - Currently honing skills in preprocessing, databases, and intelligent systems
- - Always eager to explore new technologies and apply them in real-world projects  
+## Brett Adams
 
-## Socials:
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bretta/) [![Website](https://img.shields.io/badge/Website-%230077B5.svg?logo=internet&logoColor=white)](https://brettadams0.github.io/)
+Fourth-year Computer Science (Software Engineering) at the **University of Windsor**, currently a **Data Analyst Intern at Geotab** working in BigQuery, Airflow, and SQL.
 
-# Tech Stack:
+I like building the unglamorous layer — auth flows, data plumbing, the tool that removes a manual step — and writing down *why* it works the way it does.
 
-### Programming Languages & Web Development
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)  
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+[Portfolio](https://brettadams0.github.io/) · [Blog](https://brettadams0.github.io/blog/) · [LinkedIn](https://www.linkedin.com/in/bretta/) · [Résumé](https://brettadams0.github.io/assets/resume/Resume_BrettAdams.pdf)
 
-### Data Science & Machine Learning
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
+---
 
-### Tools, Operating Systems & Databases
-![Git](https://img.shields.io/badge/Git-fc6d26?style=for-the-badge&logo=git&logoColor=white) ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) ![Docker](https://img.shields.io/badge/Docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Jenkins](https://img.shields.io/badge/Jenkins-%232C5263.svg?style=for-the-badge&logo=Jenkins&logoColor=white) ![Kubernetes](https://img.shields.io/badge/Kubernetes-%23326ce5.svg?style=for-the-badge&logo=Kubernetes&logoColor=white) ![Bash](https://img.shields.io/badge/bash-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)  
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+### Selected work
 
-### Cloud & Other Skills
-![AWS](https://img.shields.io/badge/Amazon_AWS-%23232F3E.svg?style=for-the-badge&logo=amazon-aws&logoColor=white) ![Azure](https://img.shields.io/badge/Microsoft_Azure-%230072C6.svg?style=for-the-badge&logo=microsoft-azure&logoColor=white)  
-![MATLAB](https://img.shields.io/badge/MATLAB-%23FF9700.svg?style=for-the-badge&logo=mathworks&logoColor=white) ![ROS](https://img.shields.io/badge/ROS-%231572B6.svg?style=for-the-badge&logo=ROS&logoColor=white)
+**[google-workspace-mcp](https://github.com/brettadams0/google-workspace-mcp)** — `Node` `OAuth 2.0` `MCP`
+An MCP server that gives Claude Code write access to Gmail, Calendar, Drive, Sheets, and YouTube. 23 tools over 5 Google APIs, running on an OAuth client I own rather than a hosted connector. It requests *only* write scopes — `gmail.readonly` and `drive.readonly` are Google "Restricted" scopes that would drag a single-user tool into a paid CASA security audit, so reading is left to the connectors that already do it well. Tested in CI without credentials or network.
 
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=brettadams0&theme=nightowl&hide_border=false&include_all_commits=false&count_private=false) ![](https://github-readme-streak-stats.herokuapp.com/?user=brettadams0&theme=nightowl&hide_border=false)  
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=brettadams0&theme=nightowl&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+**[brettadams0.github.io](https://github.com/brettadams0/brettadams0.github.io)** — `Jekyll` `SCSS` `Web Perf`
+My portfolio and blog. The interesting part is the loading strategy: fonts use `display=optional` rather than `swap` because swapping after layout measured ~0.08 CLS, and the scroll-animation CSS is gated behind a `no-js` class so a blocked script can't leave the page permanently invisible.
+
+**[TechNest](https://github.com/brettadams0/TechNest)** — `PHP` `MySQL`
+A full e-commerce application — catalog, cart, checkout, order management, switchable themes, and a separate admin panel — with a real schema, seed data, and written admin/end-user/installation guides.
+
+**[neuronet-arena](https://github.com/brettadams0/neuronet-arena)** — `Python` `Genetic Algorithms`
+Agents driven by small hand-rolled neural networks compete in a graph-based arena and evolve across generations. No ML framework: the network and the genetic algorithm are both written from scratch.
+
+**[PromptPal](https://github.com/brettadams0/PromptPal)** — `Next.js` `TypeScript` `Tailwind`
+A prompt-composition tool for LLMs, built on the App Router with a typed component library.
+
+---
+
+### Currently
+
+- Analytics work at Geotab — BigQuery, Airflow DAGs, SQL over vehicle telematics data.
+- Building MCP servers so Claude Code can act on real systems instead of just describing them.
+- Writing up what breaks, at [brettadams0.github.io/blog](https://brettadams0.github.io/blog/).
+
+### Tools I actually reach for
+
+`Python` · `JavaScript / TypeScript` · `Java` · `C / C++` · `SQL` · `BigQuery` · `Airflow`
+`Node.js` · `Next.js` · `Flask` · `PHP` · `MySQL` · `PostgreSQL` · `SQLite`
+`Git` · `Docker` · `Linux` · `Bash` · `pandas`
