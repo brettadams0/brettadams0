@@ -19,6 +19,12 @@ My portfolio and blog. The interesting part is the loading strategy: fonts use `
 **[TechNest](https://github.com/brettadams0/TechNest)** — `PHP` `MySQL`
 A full e-commerce application — catalog, cart, checkout, order management, switchable themes, and a separate admin panel — with a real schema, seed data, and written admin/end-user/installation guides.
 
+**Four more MCP servers**, same shape, different auth models — which is most of what makes them interesting:
+[`reddit-mcp`](https://github.com/brettadams0/reddit-mcp) (OAuth2, and the only one that can post publicly as you) ·
+[`yahoo-fantasy-mcp`](https://github.com/brettadams0/yahoo-fantasy-mcp) (OAuth2 with rotating refresh tokens and an out-of-band consent flow) ·
+[`supercell-mcp`](https://github.com/brettadams0/supercell-mcp) (three game APIs behind one server; keys are bound to your public IP, which fails as a confusing 403) ·
+[`chesscom-mcp`](https://github.com/brettadams0/chesscom-mcp) (no auth at all). All five run tests in CI without credentials or network.
+
 **[neuronet-arena](https://github.com/brettadams0/neuronet-arena)** — `Python` `Genetic Algorithms`
 Agents driven by small hand-rolled neural networks compete in a graph-based arena and evolve across generations. No ML framework: the network and the genetic algorithm are both written from scratch.
 
