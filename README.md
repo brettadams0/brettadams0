@@ -21,14 +21,17 @@ An MCP server that gives Claude Code write access to Gmail, Calendar, Drive, She
 
 Writing MCP servers is where `mcp-surface` came from: the same failures kept recurring, none of them announced themselves, and every one was visible in the tool surface if you actually looked at it. The [case study](https://brettadams0.github.io/mcp/) covers how the three fit together and what a security review of the servers turned up.
 
-**[TechNest](https://github.com/brettadams0/TechNest)** — `PHP` `MySQL`
-A full e-commerce application — catalog, cart, checkout, order management, switchable themes, and a separate admin panel — with a real schema, seed data, and written admin/end-user/installation guides.
+**[PromptPal](https://github.com/brettadams0/PromptPal)** — `TypeScript` `Next.js` `React` · [live](https://prompt-pal-gules.vercel.app)
+A browser tool for writing prompt templates, with its own small template language and a parser that reports errors by line and column. It fills a template in, flags empty required fields and leftover placeholders like "[insert topic]", and exports plain text or a ready-to-run Claude API call. No backend: a share link carries the prompt in the URL fragment.
 
-**[neuronet-arena](https://github.com/brettadams0/neuronet-arena)** — `Python` `Genetic Algorithms`
-Agents driven by small hand-rolled neural networks compete in a graph-based arena and evolve across generations. No ML framework: the network and the genetic algorithm are both written from scratch.
+**[TechNest](https://github.com/brettadams0/TechNest)** — `PHP` `MySQL` `SQLite` `Docker`
+An electronics store in PHP with no framework: search, cart, checkout, order tracking, and an admin dashboard. Checkout is one database transaction that takes stock with a conditional update, so the last unit can't sell twice; CSRF and access-control checks run before any page code, and the tests walk the route table to prove it. 200+ tests run against SQLite and MySQL in CI.
+
+**[neuronet-arena](https://github.com/brettadams0/neuronet-arena)** — `Python` `JavaScript` `Genetic Algorithms`
+Agents driven by small hand-rolled neural networks compete for food and evolve across generations. No ML framework: the network, the genetic algorithm and the random number generator are written from scratch in Python, then ported to JavaScript for a [live demo](https://brettadams0.github.io/neuronet-arena/) that reproduces the Python run bit for bit. The [write-up](https://brettadams0.github.io/writing/the-simulator-that-never-evolved/) covers why the first version never actually evolved.
 
 **[brettadams0.github.io](https://github.com/brettadams0/brettadams0.github.io)** — `Jekyll` `CSS` `GitHub Actions`
-My portfolio. One page, one stylesheet, light and dark themes that follow the system setting, and no JavaScript apart from analytics. CI builds it with the same action GitHub Pages uses and fails if any internal link or asset doesn't resolve.
+My portfolio. One page plus posts, one stylesheet, light and dark themes that follow the system setting, and no JavaScript apart from analytics. CI builds it with the same action GitHub Pages uses and fails if any internal link or asset doesn't resolve.
 
 ---
 
