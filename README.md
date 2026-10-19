@@ -4,42 +4,41 @@ Fourth-year Computer Science (Software Engineering) at the **University of Winds
 
 I like building the unglamorous layer — auth flows, data plumbing, the tool that removes a manual step — and writing down *why* it works the way it does.
 
-[Portfolio](https://brettadams0.github.io/) · [Blog](https://brettadams0.github.io/blog/) · [LinkedIn](https://www.linkedin.com/in/bretta/) · [Résumé](https://brettadams0.github.io/assets/resume/Resume_BrettAdams.pdf)
+[Portfolio](https://brettadams0.github.io/) · [MCP case study](https://brettadams0.github.io/mcp/) · [LinkedIn](https://www.linkedin.com/in/bretta/) · [Résumé](https://brettadams0.github.io/assets/resume/Resume_BrettAdams.pdf)
 
 ---
 
 ### Selected work
 
 **[mcp-surface](https://github.com/brettadams0/mcp-surface)** — `TypeScript` `MCP` `CLI` · [on npm](https://www.npmjs.com/package/mcp-surface)
-A broken MCP server usually doesn't look broken. It starts, it completes the handshake, the client lists it as **Connected** — and the model never calls anything, because the tool surface came back empty, a schema didn't compile, or a `required` field names a property that isn't there. Nothing errors; you just get worse answers. `mcp-surface` connects the way a real client does, reports the surface it actually sees, validates every schema, and fails CI when that surface changes without you meaning it to. Ships as a CLI and a GitHub Action.
+A broken MCP server usually doesn't look broken. It starts, it completes the handshake, the client lists it as **Connected** — and the model never calls anything, because the tool surface came back empty, a schema didn't compile, or a `required` field names a property that isn't there. Nothing errors; you just get worse answers. `mcp-surface` connects the way a real client does, reports the surface it actually sees, validates every schema, and fails CI when that surface changes without you meaning it to. Ships as a CLI and a GitHub Action. It paid for itself on day one: a routine Zod 3 → 4 upgrade passed every unit test in my Google Workspace server, and `mcp-surface` failed the build because all 23 tool schemas had changed underneath them.
 
 **[google-workspace-mcp](https://github.com/brettadams0/google-workspace-mcp)** — `Node` `OAuth 2.0` `MCP`
-An MCP server that gives Claude Code write access to Gmail, Calendar, Drive, Sheets, and YouTube. 23 tools over 5 Google APIs, running on an OAuth client I own rather than a hosted connector. It requests *only* write scopes — `gmail.readonly` and `drive.readonly` are Google "Restricted" scopes that would drag a single-user tool into a paid CASA security audit, so reading is left to the connectors that already do it well. Tested in CI without credentials or network.
+An MCP server that gives Claude Code write access to Gmail, Calendar, Drive, Sheets, and YouTube. 23 tools over 5 Google APIs, running on an OAuth client I own rather than a hosted connector. It requests no Google "Restricted" scopes — `gmail.readonly` and `drive.readonly` would drag a single-user tool into a paid CASA security audit — so it can send mail but not read the inbox, and reading is left to the connectors that already do it well. Every tool argument is treated as untrusted model output: a subject line that smuggles in a `Bcc:` header is refused, and cell values are written as plain text so `=IMPORTDATA(…)` can't run as a formula, each with a test that builds the attack. Tested in CI without credentials or network.
 
-**[brettadams0.github.io](https://github.com/brettadams0/brettadams0.github.io)** — `Jekyll` `SCSS` `Web Perf`
-My portfolio and blog. The interesting part is the loading strategy: fonts use `display=optional` rather than `swap` because swapping after layout measured ~0.08 CLS, and the scroll-animation CSS is gated behind a `no-js` class so a blocked script can't leave the page permanently invisible.
+**[reddit-mcp](https://github.com/brettadams0/reddit-mcp)** — `Node` `OAuth 2.0` `MCP`
+12 tools that read, post, comment, vote, and message as your Reddit account. Reddit answers a rejected post with HTTP 200 and the reasons tucked into the body, and quietly ignores an id of the wrong type, so the server turns both into real errors rather than letting the model announce a post that never went up. Subreddit names and ids are validated before they reach a URL, because `../api/v1/me` would otherwise resolve to a different endpoint with your token attached.
 
-**[TechNest](https://github.com/brettadams0/TechNest)** — `PHP` `MySQL`
-A full e-commerce application — catalog, cart, checkout, order management, switchable themes, and a separate admin panel — with a real schema, seed data, and written admin/end-user/installation guides.
+Writing MCP servers is where `mcp-surface` came from: the same failures kept recurring, none of them announced themselves, and every one was visible in the tool surface if you actually looked at it. The [case study](https://brettadams0.github.io/mcp/) covers how the three fit together and what a security review of the servers turned up.
 
-**Four more MCP servers**, same shape, different auth models — which is most of what makes them interesting:
-[`reddit-mcp`](https://github.com/brettadams0/reddit-mcp) (OAuth2, and the only one that can post publicly as you) ·
-[`yahoo-fantasy-mcp`](https://github.com/brettadams0/yahoo-fantasy-mcp) (OAuth2 with rotating refresh tokens and an out-of-band consent flow) ·
-[`supercell-mcp`](https://github.com/brettadams0/supercell-mcp) (three game APIs behind one server; keys are bound to your public IP, which fails as a confusing 403) ·
-[`chesscom-mcp`](https://github.com/brettadams0/chesscom-mcp) (no auth at all). All five run tests in CI without credentials or network.
+**[PromptPal](https://github.com/brettadams0/PromptPal)** — `TypeScript` `Next.js` `React` · [live](https://prompt-pal-gules.vercel.app)
+A browser tool for writing prompt templates, with its own small template language and a parser that reports errors by line and column. It fills a template in, flags empty required fields and leftover placeholders like "[insert topic]", and exports plain text or a ready-to-run Claude API call. No backend: a share link carries the prompt in the URL fragment.
 
-Writing five of these is where `mcp-surface` came from: the same failures kept recurring, none of them announced themselves, and every one was visible in the tool surface if you actually looked at it.
+**[TechNest](https://github.com/brettadams0/TechNest)** — `PHP` `MySQL` `SQLite` `Docker`
+An electronics store in PHP with no framework: search, cart, checkout, order tracking, and an admin dashboard. Checkout is one database transaction that takes stock with a conditional update, so the last unit can't sell twice; CSRF and access-control checks run before any page code, and the tests walk the route table to prove it. 200+ tests run against SQLite and MySQL in CI.
 
-**[neuronet-arena](https://github.com/brettadams0/neuronet-arena)** — `Python` `Genetic Algorithms`
-Agents driven by small hand-rolled neural networks compete in a graph-based arena and evolve across generations. No ML framework: the network and the genetic algorithm are both written from scratch.
+**[neuronet-arena](https://github.com/brettadams0/neuronet-arena)** — `Python` `JavaScript` `Genetic Algorithms`
+Agents driven by small hand-rolled neural networks compete for food and evolve across generations. No ML framework: the network, the genetic algorithm and the random number generator are written from scratch in Python, then ported to JavaScript for a [live demo](https://brettadams0.github.io/neuronet-arena/) that reproduces the Python run bit for bit. The [write-up](https://brettadams0.github.io/writing/the-simulator-that-never-evolved/) covers why the first version never actually evolved.
+
+**[brettadams0.github.io](https://github.com/brettadams0/brettadams0.github.io)** — `Jekyll` `CSS` `GitHub Actions`
+My portfolio. One page plus posts, one stylesheet, light and dark themes that follow the system setting, and no JavaScript apart from analytics. CI builds it with the same action GitHub Pages uses and fails if any internal link or asset doesn't resolve.
 
 ---
 
 ### Currently
 
-- Analytics work at Geotab — BigQuery, Airflow DAGs, SQL over vehicle telematics data.
+- Data work at Geotab — production BigQuery SQL and Airflow DAGs for the SalesOps pipelines.
 - Building MCP servers so Claude Code can act on real systems instead of just describing them, and tooling to keep them honest once they exist.
-- Writing up what breaks, at [brettadams0.github.io/blog](https://brettadams0.github.io/blog/).
 
 ### Tools I actually reach for
 
