@@ -1,0 +1,41 @@
+# Lives here so it works when switchboard/ becomes its own repository.
+# (GitHub only reads workflows from the repository root's .github/.)
+name: switchboard
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: { POSTGRES_PASSWORD: sb, POSTGRES_USER: sb, POSTGRES_DB: switchboard_test }
+        ports: ['5432:5432']
+        options: --health-cmd pg_isready --health-interval 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22.x }
+      - run: sudo apt-get install -y tmux
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm test
+        env: { DATABASE_URL: postgres://sb:sb@localhost:5432/switchboard_test }
+  android:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: android } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew --no-daemon :app:testDebugUnitTest :app:assembleRelease
+        env:
+          SB_KEYSTORE_BASE64: ${{ secrets.SB_KEYSTORE_BASE64 }}
+          SB_KEYSTORE_PASSWORD: ${{ secrets.SB_KEYSTORE_PASSWORD }}
+      - uses: actions/upload-artifact@v4
+        with: { name: switchboard-apk, path: android/app/build/outputs/apk/release/*.apk, retention-days: 14 }

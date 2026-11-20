@@ -1,0 +1,27 @@
+{
+  "name": "switchboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Drive many Claude Code sessions from one: tmux control, a Postgres-backed message bus, a web UI, and a phone app that talks.",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "bin": { "sb": "bin/sb" },
+  "scripts": {
+    "start": "node src/server.ts",
+    "channel": "node src/channel.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --test-concurrency=1 test/*.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "pg": "^8.16.0",
+    "ws": "^8.18.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/pg": "^8.15.0",
+    "@types/ws": "^8.18.0",
+    "typescript": "^5.8.0"
+  }
+}

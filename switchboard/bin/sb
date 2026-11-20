@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# Resolve symlinks so `ln -s …/switchboard/bin/sb ~/.local/bin/sb` works.
+here="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+exec node "$here/src/cli.ts" "$@"
