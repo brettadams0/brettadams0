@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Switchboard</title>
+<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="login" class="login" hidden>
+  <form id="login-form" class="card">
+    <h1>Switchboard</h1>
+    <p class="muted">Paste the token from <code>sb info</code>.</p>
+    <input id="login-token" type="password" autocomplete="current-password" placeholder="Token" required>
+    <button type="submit" class="primary">Connect</button>
+    <p id="login-error" class="error" hidden></p>
+  </form>
+</div>
+
+<div id="app" class="app" hidden>
+  <header class="top">
+    <button id="menu-btn" class="icon-btn only-narrow" aria-label="Sessions">☰</button>
+    <div class="brand"><span id="conn" class="dot off" title="disconnected"></span> Switchboard</div>
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="chat" aria-selected="true">Chat</button>
+      <button role="tab" data-tab="tasks">Tasks</button>
+      <button role="tab" data-tab="search">Search</button>
+    </nav>
+    <label class="speak-toggle" title="Read replies aloud">
+      <input id="speak" type="checkbox"> <span>🔊</span>
+    </label>
+  </header>
+
+  <main>
+    <!-- CHAT -->
+    <section id="tab-chat" class="tab chat">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-head">
+          <span>Sessions</span>
+          <button id="new-session-btn" class="small">+ New</button>
+        </div>
+        <ul id="session-list" class="session-list"></ul>
+        <div id="update-banner" class="update-banner" hidden></div>
+      </aside>
+      <div id="scrim" class="scrim" hidden></div>
+
+      <div class="thread-wrap">
+        <div class="thread-head">
+          <div>
+            <div id="thread-title" class="thread-title">Everything</div>
+            <div id="thread-sub" class="muted small-text"></div>
+          </div>
+          <div class="thread-actions">
+            <button id="screen-btn" class="small" hidden>Screen</button>
+            <button id="stop-btn" class="small danger" hidden>Stop</button>
+          </div>
+        </div>
+        <div id="screen-panel" class="screen-panel" hidden>
+          <pre id="screen"></pre>
+          <div class="screen-keys">
+            <button data-key="Enter" class="small">Enter</button>
+            <button data-key="Escape" class="small">Esc</button>
+            <button data-key="Up" class="small">↑</button>
+            <button data-key="Down" class="small">↓</button>
+            <button data-key="1" class="small">1</button>
+            <button data-key="2" class="small">2</button>
+            <button id="screen-refresh" class="small">Refresh</button>
+          </div>
+        </div>
+        <div id="permissions" class="permissions"></div>
+        <ol id="messages" class="messages" aria-live="polite"></ol>
+        <form id="composer" class="composer">
+          <textarea id="input" rows="1" placeholder="Message the orchestrator…" enterkeyhint="send"></textarea>
+          <button id="mic" type="button" class="mic" aria-label="Hold to talk" title="Hold to talk">🎙</button>
+          <button type="submit" class="primary send" aria-label="Send">↑</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section id="tab-tasks" class="tab tasks" hidden>
+      <form id="task-add" class="task-add">
+        <input id="task-title" placeholder="New task…  #project  !0-3" autocomplete="off">
+        <button class="primary">Add</button>
+      </form>
+      <div class="task-filters">
+        <select id="task-project"><option value="">All projects</option></select>
+        <select id="task-status">
+          <option value="open">Open</option>
+          <option value="doing">Doing</option>
+          <option value="todo">To do</option>
+          <option value="backlog">Backlog</option>
+          <option value="blocked">Blocked</option>
+          <option value="done">Done</option>
+          <option value="">Everything</option>
+        </select>
+      </div>
+      <div id="task-groups"></div>
+    </section>
+
+    <!-- SEARCH -->
+    <section id="tab-search" class="tab search" hidden>
+      <form id="search-form" class="task-add">
+        <input id="search-q" type="search" placeholder="Search every message ever sent…" autocomplete="off">
+        <button class="primary">Search</button>
+      </form>
+      <ol id="search-results" class="messages flat"></ol>
+    </section>
+  </main>
+</div>
+
+<dialog id="new-session">
+  <form method="dialog" id="new-session-form" class="card">
+    <h2>New session</h2>
+    <label>Name <input name="name" required pattern="[a-z0-9][a-z0-9-]{0,39}" placeholder="api-refactor"></label>
+    <label>Directory <input name="cwd" placeholder="default from config"></label>
+    <label>What for <input name="description" placeholder="one line"></label>
+    <label>First instruction <textarea name="prompt" rows="3"></textarea></label>
+    <label class="row"><input type="checkbox" name="orchestrator"> Orchestrator</label>
+    <p class="error" id="new-session-error" hidden></p>
+    <div class="row end">
+      <button value="cancel" formnovalidate>Cancel</button>
+      <button value="ok" class="primary">Start</button>
+    </div>
+  </form>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
