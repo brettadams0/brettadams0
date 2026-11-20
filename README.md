@@ -1,6 +1,6 @@
 ## Brett Adams
 
-Software engineering student building backend services, data pipelines and developer tools. Fourth-year Computer Science (Software Engineering) at the **University of Windsor**, graduating 2027, and currently a **Data Analyst Intern at Geotab** on production pipelines in BigQuery and Airflow.
+Software engineering student building backend services, data pipelines and developer tools. Fourth-year Computer Science (Software Engineering) at the **University of Windsor**, graduating 2027, and currently a **Data Analyst Intern at Geotab** on production pipelines in BigQuery and Airflow. Based in Vineland, Ontario.
 
 I like building the unglamorous layer — auth flows, data plumbing, the tool that removes a manual step — and writing down *why* it works the way it does.
 
