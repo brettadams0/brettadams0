@@ -1,6 +1,6 @@
 # Brett Adams
 
-I build backend services, data pipelines and developer tools. I’m a Computer Science student in the Software Engineering program at the University of Windsor, graduating in 2027. As a Data Analyst Intern at Geotab, I work on production SalesOps pipelines in BigQuery and Airflow. I’m based in Vineland, Ontario.
+I build backend services, data pipelines and developer tools. I’m a Computer Science student in the Software Engineering program at the University of Windsor, graduating in 2027. I’m a Data Analyst Intern on Geotab’s Global Data Operations team, where I work with BigQuery and Airflow. I’m based in Vineland, Ontario.
 
 [Portfolio](https://brettadams0.github.io/) · [Résumé](https://brettadams0.github.io/assets/resume/Resume_BrettAdams.pdf) · [LinkedIn](https://www.linkedin.com/in/bretta/)
 
